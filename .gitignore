@@ -216,3 +216,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# index-arena local benchmark data and exact-neighbor caches
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+data/ground_truth/*
+!data/ground_truth/.gitkeep
