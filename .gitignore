@@ -226,3 +226,4 @@ data/ground_truth/*
 !data/ground_truth/.gitkeep
 
 /data
+*/__init__.py
