@@ -224,3 +224,5 @@ data/processed/*
 !data/processed/.gitkeep
 data/ground_truth/*
 !data/ground_truth/.gitkeep
+
+/data
