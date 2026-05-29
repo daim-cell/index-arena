@@ -32,21 +32,21 @@ logger = logging.getLogger(__name__)
 # ── Parameter grids ──────────────────────────────────────────────────────────
 
 IVF_FLAT_GRID = {
-    "nlist": [64, 256, 1024],
-    "nprobe": [4, 16, 64],
+    "nlist": [ 256, 1024],
+    "nprobe": [ 16, 64],
 }
 
 IVF_PQ_GRID = {
-    "nlist": [64, 256, 1024],
-    "m_pq": [8, 16, 32],
+    "nlist": [ 256, 1024],
+    "m_pq": [32],
     "nbits": [8],
-    "nprobe": [4, 16, 64],
+    "nprobe": [ 16, 64],
 }
 
 HNSW_GRID = {
-    "hnsw_m": [8, 16, 32],
-    "ef_construction": [40, 100, 200],
-    "ef_search": [16, 32, 64, 128],
+    "hnsw_m": [16, 32],
+    "ef_construction": [100, 200],
+    "ef_search": [64, 128],
 }
 
 WARMUP_COUNT = 100
