@@ -227,3 +227,5 @@ data/ground_truth/*
 
 /data
 */__init__.py
+requirements_old.txt
+results/
