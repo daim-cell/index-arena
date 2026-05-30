@@ -19,7 +19,8 @@ class EmbedderConfig:
     batch_size: int = 500
     normalize: bool = True
     cache_dir: Path = Path("data/processed")
-    wikipedia_config: str = "20220301.en"
+    wikipedia_dataset: str = "wikimedia/wikipedia"
+    wikipedia_config: str = "20231101.en"
 
 
 @dataclass
@@ -68,9 +69,12 @@ def _load_wikipedia_texts(config: EmbedderConfig) -> tuple[list[str], list[str]]
 
     need = config.n_corpus + config.n_queries
     logger.info(
-        "Streaming Wikipedia (%s), collecting %d paragraphs...", config.wikipedia_config, need
+        "Streaming %s/%s, collecting %d paragraphs...",
+        config.wikipedia_dataset,
+        config.wikipedia_config,
+        need,
     )
-    ds = load_dataset("wikipedia", config.wikipedia_config, split="train", streaming=True)
+    ds = load_dataset(config.wikipedia_dataset, config.wikipedia_config, split="train", streaming=True)
     texts: list[str] = []
     skipped = 0
     for row in ds:

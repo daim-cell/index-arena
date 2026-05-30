@@ -9,14 +9,20 @@ import uuid
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Optional
+from typing import Any, Optional, Protocol, runtime_checkable
 
 import faiss
 import numpy as np
 import psutil
 
-from data_gen import Dataset
 from indexes import BaseIndex
+
+
+@runtime_checkable
+class DatasetLike(Protocol):
+    corpus: np.ndarray
+    queries: np.ndarray
+    config: Any
 
 logger = logging.getLogger(__name__)
 
@@ -118,7 +124,7 @@ def _measure_queries(
 
 def run_benchmark(
     index: BaseIndex,
-    dataset: Dataset,
+    dataset: DatasetLike,
     gt_indices: np.ndarray,
     gt_cache_key: str,
     config: BenchmarkConfig,
